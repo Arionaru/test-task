@@ -4,3 +4,9 @@ spring:
     url: jdbc:postgresql://localhost:5411/store
     username: postgres
     password: postgrespass
+  kafka:
+    bootstrap-servers: localhost:9092
+    topics:
+      journal-request: journal-request
+    producer:
+      max-request-size: 10000000
