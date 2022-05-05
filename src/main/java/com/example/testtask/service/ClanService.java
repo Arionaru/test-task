@@ -1,13 +1,10 @@
 package com.example.testtask.service;
 
 
-import com.example.testtask.domain.Clan;
-
 public interface ClanService {
 
-    void incGold(long id, long gold);
+    void incGold(long clanId, long gold, long userId);
 
-    void decGold(long id, long gold);
+    void decGold(long clanId, long gold, long userId);
 
-    Clan getClan(long id);
 }

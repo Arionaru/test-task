@@ -26,7 +26,7 @@ class ClanServiceImplTest extends AbstractIntegrationTest {
         IntStream.range(0, 100).forEach(
                 number -> {
                     CompletableFuture<Void> future = CompletableFuture.runAsync(() ->
-                            clanService.incGold(testName.getId(), 1));
+                            clanService.incGold(testName.getId(), 1, 1));
                     futures.add(future);
                 }
         );
@@ -42,7 +42,7 @@ class ClanServiceImplTest extends AbstractIntegrationTest {
         IntStream.range(0, 99).forEach(
                 number -> {
                     CompletableFuture<Void> future = CompletableFuture.runAsync(() ->
-                            clanService.decGold(testClan.getId(), 1));
+                            clanService.decGold(testClan.getId(), 1, 1));
                     futures.add(future);
                 }
         );
@@ -56,7 +56,7 @@ class ClanServiceImplTest extends AbstractIntegrationTest {
         Clan testClan = clanRepository.save(Clan.builder().name("testClan").gold(100).build());
         NoSuchMoneyException exception = Assertions.assertThrows(
                 NoSuchMoneyException.class,
-                () -> clanService.decGold(testClan.getId(), 110)
+                () -> clanService.decGold(testClan.getId(), 110, 1)
         );
         Assertions.assertEquals("Нет таких денег!", exception.getMessage());
         Clan savedClan = clanRepository.findById(testClan.getId()).orElseThrow();
