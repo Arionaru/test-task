@@ -25,12 +25,12 @@ public class JournalServiceImpl implements JournalService {
         description.put("userId", String.valueOf(userId));
         description.put("gold", String.valueOf(gold));
         EventDto eventDto = EventDto.builder()
-                .action(clanAction.name())
+                .action(clanAction.toString())
                 .eventTime(LocalDateTime.now())
-                .source(Source.CLAN.name())
+                .source(Source.CLAN.toString())
                 .sourceId(String.valueOf(clanId))
                 .description(description)
-                .status(status.name())
+                .status(status.toString())
                 .build();
         journalMessageSender.send(eventDto, UUID.randomUUID().toString());
     }
