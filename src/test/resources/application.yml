@@ -3,3 +3,8 @@ spring:
     driverClassName: org.postgresql.Driver
     username: test
     password: test
+  kafka:
+    topics:
+      journal-request: test.journal-request
+    producer:
+      max-request-size: 10000000
